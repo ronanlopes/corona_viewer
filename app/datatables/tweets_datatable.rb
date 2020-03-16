@@ -14,7 +14,7 @@ class TweetsDatatable < TemplateDatatable
 private
 
   def sort_columns_collection
-    []
+    Tweet::VIEW_COLUMNS
   end
 
   def data
@@ -24,6 +24,8 @@ private
           tweet["user"]["name"]
         elsif c==:place
           tweet.dig(:place, :full_name)
+        elsif c==:timestamp_ms
+           I18n.l(Time.at(tweet["timestamp_ms"].to_i/1000).to_datetime)
         else
           tweet[c]
         end
@@ -33,27 +35,7 @@ private
 
 
   def fetch_objects
-=begin    tweets = Tweet.order("#{sort_column} #{sort_direction}")
-
-    if params[:search][:value].present?
-      conditions = []
-
-      conditions << "(CAST(tweets.id AS TEXT) LIKE ?)"
-
-
-      values = []
-      values <<  params[:search][:value]
-
-      0.times do
-        values << "%" + params[:search][:value] + "%"
-      end
-
-      conditions = ["(#{conditions.join(" or ")})"] + values
-    end
-=end
-
-
-    MongoHelper.load_collection("tweets_coronavirus", page, per_page)
+    MongoHelper.load_collection("tweets_coronavirus", page.to_i-1, per_page, sort_column, sort_direction,params[:search][:value])
   end
 
 end
