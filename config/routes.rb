@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :tweets
   resources :perfis
   root to: 'application#index'
 

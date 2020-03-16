@@ -20,7 +20,7 @@ module RailsProjetoBase
   class Application < Rails::Application
 
 
-    config.autoload_paths += %W(#{config.root}/lib #{config.root})
+    config.autoload_paths += %W(#{config.root}/lib #{config.root} #{config.root}/app)
 
 		config.time_zone = 'Brasilia'
 

@@ -50,6 +50,7 @@ GEM
       axlsx (>= 2.0.1)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bson (4.8.2)
     builder (3.2.3)
     byebug (9.0.6)
     cancancan (2.0.0)
@@ -148,6 +149,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
+    mongo (2.12.0.rc0)
+      bson (>= 4.8.2, < 5.0.0)
     multi_json (1.12.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -290,6 +293,7 @@ DEPENDENCIES
   jquery-ui-rails
   listen (~> 3.0.5)
   meiomask-rails
+  mongo (~> 2.12.0.rc0)
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.3)
@@ -310,4 +314,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.14.6
+   1.16.6

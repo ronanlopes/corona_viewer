@@ -12,7 +12,7 @@ pt-BR:
     - Sex
     - Sáb
     abbr_month_names:
-    -
+    - 
     - Jan
     - Fev
     - Mar
@@ -38,7 +38,7 @@ pt-BR:
       long: "%d de %B de %Y"
       short: "%d de %B"
     month_names:
-    -
+    - 
     - Janeiro
     - Fevereiro
     - Março
@@ -104,19 +104,22 @@ pt-BR:
       data_arrendatario: Essa usina possui já contrato nesse período.
       permission_error: Você não tem permissão para acessar essa página!
       conta_not_found: Nenhuma conta encontrada para esta unidade no período informado!
-      percentual_credito: O somatório dos percentuais de crédito deve ser igual a 100%.
-      server_side_error: Ops, algo deu errado ao processar sua requisição. Por favor, tente novamente mais tarde!
+      percentual_credito: O somatório dos percentuais de crédito deve ser igual a
+        100%.
+      server_side_error: Ops, algo deu errado ao processar sua requisição. Por favor,
+        tente novamente mais tarde!
       contrato_nao_encontrado: Contrato não encontrado!
       conta_total: Não coincide com a soma das discriminações.
       cliente_cnpjs: É necessário informar no mínimo um cnpj.
       accepted: deve ser aceito
       blank: não pode ficar em branco
       present: deve ficar em branco
-      email: formato de e-mail inválido
+      email: Endereço de e-mail inválido
       confirmation: não é igual a %{attribute}
       distribuidora_importacao: não possui importação disponível!
-      cliente_distribuidora_required: "Distribuidora/Cliente não encontrado(s)."
-      importacao_pdf: "Não foi possível extrair os dados. Favor verificar se o arquivo está no formato da distribuidora selecionada."
+      cliente_distribuidora_required: Distribuidora/Cliente não encontrado(s).
+      importacao_pdf: Não foi possível extrair os dados. Favor verificar se o arquivo
+        está no formato da distribuidora selecionada.
       cep: CEP inválido
       brazilian_zip_code: CEP inválido
       importar_csv: Houveram erros na importação. Favor verificar!
@@ -137,7 +140,6 @@ pt-BR:
       odd: deve ser ímpar
       required: deve existir
       taken: já está em uso
-      email: "Endereço de e-mail inválido"
       too_long:
         one: 'é muito longo (máximo: 1 caracter)'
         other: 'é muito longo (máximo: %{count} caracteres)'
@@ -156,49 +158,49 @@ pt-BR:
   helpers:
     select:
       prompt: Por favor selecione
-    actions: "Ações"
+    actions: Ações
     submit:
-      create: "Criar %{model}"
-      submit: "Salvar %{model}"
-      update: "Atualizar %{model}"
+      create: Criar %{model}
+      submit: Salvar %{model}
+      update: Atualizar %{model}
     titles:
-      new: "Novo %{model}"
-      new_a: "Nova %{model}"
-      edit: "Editar %{model}"
-      update: "Atualizar %{model}"
-      show: "Exibir"
-      destroy: "Excluir %{model}"
-      create: "Salvar %{model}"
-      detailing: "Detalhamento dos %{model}"
-      import_csv: "Importar CSV - %{model}"
+      new: Novo %{model}
+      new_a: Nova %{model}
+      edit: Editar %{model}
+      update: Atualizar %{model}
+      show: Exibir
+      destroy: Excluir %{model}
+      create: Salvar %{model}
+      detailing: Detalhamento dos %{model}
+      import_csv: Importar CSV - %{model}
     links:
-      confirm: "Tem certeza de que deseja apagar o registro?"
-      remove_files: "Remover arquivos"
-      new: "Novo"
+      confirm: Tem certeza de que deseja apagar o registro?
+      remove_files: Remover arquivos
+      new: Novo
       new_a: Nova
-      cancel: "Cancelar"
-      edit: "Editar"
+      cancel: Cancelar
+      edit: Editar
       edit_spaced: " Editar"
-      update: "Atualizar"
-      show: "Mostrar"
+      update: Atualizar
+      show: Mostrar
       show_spaced: " Mostrar"
-      destroy: "Remover"
+      destroy: Remover
       destroy_spaced: " Remover"
       log_spaced: " Log"
-      create: "Salvar %{model}"
-      remove_spaced : " Remover %{model}"
-      add: "Adicionar %{model}"
-      generate: "Gerar %{model}"
+      create: Salvar %{model}
+      remove_spaced: " Remover %{model}"
+      add: Adicionar %{model}
+      generate: Gerar %{model}
       log_atendimento: Log de Atendimento
       action:
-        new: "Novo"
+        new: Novo
         new_a: Nova
-        cancel: "Cancelar"
-        edit: "Editar"
-        update: "Atualizar"
-        show: "Mostrar"
-        destroy: "Apagar"
-        create: "Salvar %{model}"
+        cancel: Cancelar
+        edit: Editar
+        update: Atualizar
+        show: Mostrar
+        destroy: Apagar
+        create: Salvar %{model}
   number:
     currency:
       format:
@@ -267,7 +269,6 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
-
   activerecord:
     errors:
       messages:
@@ -275,8 +276,8 @@ pt-BR:
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
-        importacao_duplicada: 'já possui conta importada com esse vencimento!'
-        cnpj_raiz: 'possui raiz diferente do cadastro do cliente!'
+        importacao_duplicada: já possui conta importada com esse vencimento!
+        cnpj_raiz: possui raiz diferente do cadastro do cliente!
     models:
       user:
         one: Usuário
@@ -284,23 +285,28 @@ pt-BR:
       perfil:
         one: Perfil
         other: Perfis
-
+      testando_model:
+        one: Testando model
+        other: Testandos modeis
+      tweet:
+        one: Tweet
+        other: Tweets
     attributes:
       cerquilha: "#"
       user:
-        current_sign_in_at: Sessão Atual em  #g
-        current_sign_in_ip: IP atual #g
-        custom_permissions: Permissões Personalizadas  #g
-        email: E-mail  #g
-        encrypted_password: Senha Criptografada  #g
-        last_sign_in_at: Último acesso em  #g
-        last_sign_in_ip: Último acesso ip  #g
-        nome: Nome  #g
-        perfil: Perfil  #g
-        remember_created_at: Lembrar criado dia  #g
-        reset_password_sent_at: Redefinir a senha enviada em  #g
-        reset_password_token: Token de redefinição de senha  #g
-        telefone: Telefone  #g
+        current_sign_in_at: Sessão Atual em
+        current_sign_in_ip: IP atual
+        custom_permissions: Permissões Personalizadas
+        email: E-mail
+        encrypted_password: Senha Criptografada
+        last_sign_in_at: Último acesso em
+        last_sign_in_ip: Último acesso ip
+        nome: Nome
+        perfil: Perfil
+        remember_created_at: Lembrar criado dia
+        reset_password_sent_at: Redefinir a senha enviada em
+        reset_password_token: Token de redefinição de senha
+        telefone: Telefone
         perfil_id: Perfil
         index: Lista de Usuários
         password: Nova Senha
@@ -309,8 +315,22 @@ pt-BR:
       perfil:
         nome: Nome
         index: Lista de Perfis
-
-
+      testando_model:
+        minha_string: Minha string
+        index: Lista de Testandos modeis
+      tweet:
+        index: Lista de Tweets
+        id: ID
+        text: Tweet
+        user: Autor
+        timestamp_ms: Data/Hora
+        lang: Idioma
+        favorite_count: Curtidas
+        retweet_count: Retweets
+        quote_count: Citações
+        reply_count: Replies
+        source: Fonte
+        place: Localidade
     messages:
       create_success: criado com sucesso
       update_success: atualizado com sucesso
@@ -320,17 +340,14 @@ pt-BR:
       destroy_success_a: removida com sucesso
       cancel_success: cancelado com sucesso
       cancel_success_a: cancelada com sucesso
-      import_csv_success: O arquivo CSV foi recebido com sucesso. Ele será processado e você receberá o retorno por e-mail.
+      import_csv_success: O arquivo CSV foi recebido com sucesso. Ele será processado
+        e você receberá o retorno por e-mail.
       import_csv_distribuicao_success: O arquivo foi importado com sucesso!
-
   destroy: Remover
   mensagem_confirm: Você tem certeza?
-
-
   permissions:
     name: Permissões
     custom: Permissões Personalizadas
-
     context:
       application:
         name: Geral
@@ -340,7 +357,6 @@ pt-BR:
           name: Usuários
         perfis:
           name: Perfis
-
     actions:
       manage_all: Administrador
       read: Visualizar
@@ -351,7 +367,6 @@ pt-BR:
       importar_csv_percentuais: Importar CSV - % Distribuição
       importar_pdf: Importar PDF's
       gerar_relatorio: Gerar Relatório
-
   menu:
     cadastros: Cadastros
     empresas: Empresas
@@ -359,16 +374,22 @@ pt-BR:
     atividade: Relatório de Atividade
     produtividade: Relatório de Produtividade
   app:
-    login_error: O email/senha informados não correspondem a nenhum usuário cadastrado no sistema.
+    login_error: O email/senha informados não correspondem a nenhum usuário cadastrado
+      no sistema.
     logout_success: Sessão encerrada com sucesso.
     logout_error: Erro ao encerrar a sessão! Por favor tente novamente mais tarde!
     role_error: O aplicativo é destinado somente a usuários com o perfil "Operador"!
-    device_token_error: Erro ao obter o token do dispositivo. Por favor tente novamente mais tarde!
+    device_token_error: Erro ao obter o token do dispositivo. Por favor tente novamente
+      mais tarde!
     expired_token: Sua sessão expirou. Favor efetuar login novamente!
-    change_status_error: Não foi possível atualizar o status. Por favor tente novamente mais tarde!
+    change_status_error: Não foi possível atualizar o status. Por favor tente novamente
+      mais tarde!
     change_status_success: Status de Operação atualizado com sucesso!
     chamada_not_found: Não foi possível localizar a chamada!
     chamada_answer_error: A chamada não está mais disponível para atendimento!
-    encerrar_atendimento_error: Não foi possível finalizar o atendimento! Por favor, tente novamente mais tarde!
-    set_empilhadeira_error: Erro ao selecionar empilhadeira! Verifique se ela não se encontra em operação atualmente.
-    check_solicitacao_error: Não foi possível verificar novas chamadas! Verifique sua conexão ou entre em contato com algum administrador do sistema.
+    encerrar_atendimento_error: Não foi possível finalizar o atendimento! Por favor,
+      tente novamente mais tarde!
+    set_empilhadeira_error: Erro ao selecionar empilhadeira! Verifique se ela não
+      se encontra em operação atualmente.
+    check_solicitacao_error: Não foi possível verificar novas chamadas! Verifique
+      sua conexão ou entre em contato com algum administrador do sistema.
