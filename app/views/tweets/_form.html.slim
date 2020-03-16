@@ -1,0 +1,13 @@
+.panel.panel-default
+  .panel-heading
+    h5 Informações de Cadastro
+  .panel-body
+    = simple_form_for(@tweet, validate: true) do |f|
+      = f.error_notification
+
+      .form-inputs
+        .hr-line-solid
+        .form-actions
+          = botao_salvar(f)
+          '
+          = botao_cancelar(f)

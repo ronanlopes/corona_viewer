@@ -1,0 +1,20 @@
+.container
+
+  .row
+    .col-lg-12
+      h2.section-title.no-margin-top
+        span.titulo
+          = I18n.t("activerecord.attributes.tweet.index")
+  .row
+    .col-md-12
+      .row
+        .col-md-12
+          table.table.table-striped.table-responsive.table-bordered#tweets_datatable data-source="#{send("tweets_url", format: 'json')}"
+            thead
+              tr
+
+                - Tweet::VIEW_COLUMNS.each do |column|
+                  th = I18n.t("activerecord.attributes.tweet.#{column}")
+
+            tbody
+
