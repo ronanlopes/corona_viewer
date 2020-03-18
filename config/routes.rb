@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  resources :tweets
   resources :perfis
   root to: 'application#index'
 
@@ -15,7 +14,13 @@ Rails.application.routes.draw do
 	  get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
 	  patch 'users' => 'devise/registrations#update', :as => 'user_registration'
 	end
+
   resources :users, except: [:show], path: "/controle_de_usuarios"
+  resources :tweets
+
+
+  get "/heat_map" => "features#heat_map"
+
 
 
 end

@@ -14,6 +14,11 @@
   height: auto;
 }
 
+.twitter-color{
+  color: #1DA1F2;
+}
+
+
 .facebook{
   background-color: #4E69A2 !important;
   border-color: #3A5795 !important;
@@ -188,4 +193,14 @@
 
 .error-dialog{
   margin-top: 50px;
+}
+
+#map{
+  margin:40px auto;
+  width:80%;
+  height: 600px;
+}
+
+.hidden{
+  display: hidden;
 }

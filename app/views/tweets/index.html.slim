@@ -4,18 +4,16 @@
     .col-lg-12
       h2.section-title.no-margin-top
         span.titulo
-          = "<i class='fa fa-twitter'></i> #{I18n.t("activerecord.attributes.tweet.index")}  <i class='fa fa-spinner fa-spin fa-fw loading-spinner'></i>".html_safe
+          = "<i class='fa fa-twitter-square twitter-color'></i> #{I18n.t("activerecord.attributes.tweet.index")}  <i class='fa fa-spinner fa-spin fa-fw loading-spinner'></i>".html_safe
 
   .row
     .col-md-12
-      .row
-        .col-md-12
-          table.table.table-striped.table-responsive.table-bordered#tweets_datatable data-source="#{send("tweets_url", format: 'json')}"
-            thead
-              tr
+      table.table.table-striped.table-responsive.table-bordered#tweets_datatable data-source="#{send("tweets_url", format: 'json')}"
+        thead
+          tr
 
-                - Tweet::VIEW_COLUMNS.keys.each do |column|
-                  th = I18n.t("activerecord.attributes.tweet.#{column}")
+            - Tweet::VIEW_COLUMNS.keys.each do |column|
+              th = I18n.t("activerecord.attributes.tweet.#{column}")
 
-            tbody
+        tbody
 

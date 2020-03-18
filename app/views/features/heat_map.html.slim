@@ -1,0 +1,22 @@
+.container
+
+  .row
+    .col-lg-12
+      h2.section-title.no-margin-top
+        span.titulo
+          = "<i class='fa fa-map-marker'></i> Mapa de Calor".html_safe
+
+  .row
+    .col-md-12
+
+#map
+
+script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization&key=AIzaSyCceEkku47P926ZlkZgiLQaTdk3QYmFxHo"
+= javascript_include_tag "map"
+
+div.hidden#data-set data-pontos=(@points.to_json)
+
+coffee:
+	$ ->
+		initialize()
+

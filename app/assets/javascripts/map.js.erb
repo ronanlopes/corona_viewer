@@ -1,0 +1,65 @@
+var map;
+
+function imgError(image) {
+    image.onerror = "";
+    image.src = "<%= asset_path("default-user.png") %>";
+    return true;
+}
+
+function initialize() {
+  var latlng = new google.maps.LatLng(-18.8800397, -47.05878999999999);
+
+  var options = {
+      zoom: 4,
+      center: new google.maps.LatLng(-15.127750417479286, -53.18050174999996),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById("map"), options);
+
+  console.log(11111111111);
+  pontos_mapa = $("#data-set").data("pontos");
+  console.log(pontos_mapa);
+  var coordenadas = []
+  var markers = []
+
+  $.each(pontos_mapa, function(index, ponto) {
+
+    coordenada = new google.maps.LatLng(ponto.coordinates[1], ponto.coordinates[0])
+    coordenadas.push(coordenada);
+
+    var marker = new google.maps.Marker({
+        position: coordenada,
+        title: ponto.user_name,
+        icon: '<%= asset_path("map-marker.png") %>',
+        map: map
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+    google.maps.event.addListener(marker, 'click', (function(marker) {
+      return function() {
+        infowindow.setContent('<img src="'+ponto.profile_pic+'" onerror=imgError(this); width=60px height=60px; style="display: block; margin: 10px auto;"> <a class="twitteruser" href="http://www.twitter.com/'+ponto.user+'">@'+ponto.user+'</a><br>'+ponto.followers+' seguidores');
+        infowindow.open(map, marker);
+      }
+    })(marker));
+
+    markers.push(marker);
+
+  });
+
+
+
+  var mcOptions = {gridSize: 50,
+    maxZoom: 15
+  };
+  var markerCluster = new MarkerClusterer(map, markers, mcOptions);
+
+
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: coordenadas,
+    map: map,
+    radius: 50
+  });
+
+}
+

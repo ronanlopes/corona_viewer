@@ -15,6 +15,8 @@
 #//= require metisMenu
 //= require raphael
 //= require sb-admin-2
+//= require marker-clusterer
+
 
 app_control.init_before()
 # roda funções de inicialização

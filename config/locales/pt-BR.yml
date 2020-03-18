@@ -374,6 +374,7 @@ pt-BR:
   menu:
     cadastros: Cadastros
     empresas: Empresas
+    heat_map: Mapa de Calor
   relatorios:
     atividade: Relatório de Atividade
     produtividade: Relatório de Produtividade

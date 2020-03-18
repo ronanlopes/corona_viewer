@@ -22,6 +22,24 @@ module MenuHelper
       permission: can?(:index, User), parent: :cadastros
     )
 
+    #Funcionalidades
+    arr << menu_link(
+      id: :index, text: I18n.t("activerecord.models.tweet.other"),
+      icon: 'fa fa-twitter', link: tweets_path,
+      controller: :tweets,
+      permission: can?(:index, Tweet)
+    )
+
+    arr << menu_link(
+      id: :index, text: I18n.t("menu.heat_map"),
+      icon: 'fa fa-map-marker', link: heat_map_path,
+      controller: :tweets,
+      permission: can?(:index, Tweet)
+    )
+
+
+
+
     # Permissões finais
     menus_principais.each do |menu|
       arr.find { |x| x[:id] == menu[:id] }[:permission] = arr.select { |x| x[:parent] == menu[:id] }.map { |x| x[:permission] }.include?(true)
