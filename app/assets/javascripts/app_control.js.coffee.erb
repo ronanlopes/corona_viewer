@@ -13,6 +13,7 @@ initialize_before = ->
     url = $(this).data("url")
     callback = $(this).data("callback")
     modal_form({ url: url, callback: callback})
+  $('.loading-spinner').hide()
 
 @disable_submit_button_after_send = ->
   window.ClientSideValidations.callbacks.form.before = ->

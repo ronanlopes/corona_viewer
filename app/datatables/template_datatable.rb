@@ -2,6 +2,7 @@ class TemplateDatatable
   include ActionView::Helpers
   include ActionView::Context
   include CanCan::Ability
+  include Rails.application.routes.url_helpers
 
   delegate :params, to: :@view
   delegate :url_helpers, to: 'Rails.application.routes'

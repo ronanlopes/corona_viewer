@@ -332,6 +332,9 @@ pt-BR:
         reply_count: Replies
         source: Fonte
         place: Localidade
+        followers_count: Seguidores
+        verified: Perfil Verificado
+        friends_count: Seguindo
     messages:
       create_success: criado com sucesso
       update_success: atualizado com sucesso

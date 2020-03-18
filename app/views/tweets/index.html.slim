@@ -4,7 +4,8 @@
     .col-lg-12
       h2.section-title.no-margin-top
         span.titulo
-          = I18n.t("activerecord.attributes.tweet.index")
+          = "<i class='fa fa-twitter'></i> #{I18n.t("activerecord.attributes.tweet.index")}  <i class='fa fa-spinner fa-spin fa-fw loading-spinner'></i>".html_safe
+
   .row
     .col-md-12
       .row
@@ -13,7 +14,7 @@
             thead
               tr
 
-                - Tweet::VIEW_COLUMNS.each do |column|
+                - Tweet::VIEW_COLUMNS.keys.each do |column|
                   th = I18n.t("activerecord.attributes.tweet.#{column}")
 
             tbody

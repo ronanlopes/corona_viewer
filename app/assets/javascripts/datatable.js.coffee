@@ -11,6 +11,7 @@
     fnRowCallback: row_callback
     drawCallback: datatable_draw_callback
 
+
 window.language_datatable = {
   "sEmptyTable": "Nenhum registro encontrado",
   "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
