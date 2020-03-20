@@ -13,4 +13,5 @@ Rails.application.config.assets.precompile += %w(
                                                   perfis.js
                                                   tweets.js
                                                   map.js
+                                                  chart.js
                                                 )

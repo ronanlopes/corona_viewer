@@ -54,6 +54,8 @@ gem 'client_side_validations-simple_form'
 gem 'exception_notification'
 gem 'delocalize'
 gem 'rails-observers'
+gem 'chart-js-rails'
+gem 'magic_cloud'
 
 #Relatórios excel
 gem 'rubyzip', '~> 1.1.0'

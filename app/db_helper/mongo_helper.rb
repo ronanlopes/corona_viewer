@@ -27,6 +27,41 @@ class MongoHelper
     end
 
 
+    def self.so_data
+
+        so = {"android" => 0, "iphone" => 0, "web" => 0, "other" => 0}
+
+
+        CLIENT[:tweets_coronavirus].find().aggregate([{ '$group'=> { '_id'=> '$source', 'count'=> { '$sum'=> 1 } } }]).to_a.map{|source|
+
+            s = source["_id"].downcase
+
+            if s.include?("android")
+                so["android"]+=source["count"]
+            elsif s.include?("iphone")
+                so["iphone"]+=source["count"]
+            elsif s.include?("web")
+                so["web"]+=source["count"]
+            else
+                so["other"]+=source["count"]
+            end
+
+        }
+
+        so
+
+    end
+
+
+    def self.word_cloud_data
+
+        count={}
+        tweets = CLIENT[:tweets_coronavirus].find().projection({text: 1}).to_a
+        tweets.map{|tweet| tweet["text"].split.map{|w| count[w.upcase.mb_chars.to_s] = count[w.upcase.mb_chars.to_s].to_i + 1 if w.size > 4}}
+        count.select{|k,v| v > 1000 && !k.include?("@")}.sort_by{|k,v| v}.reverse
+
+    end
+
 
     def self.create_indexes
         CLIENT[:tweets_coronavirus].indexes.create_one( { "text" => 1 }, "collation" => { "locale" => "pt" })

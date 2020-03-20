@@ -31,6 +31,14 @@ module MenuHelper
     )
 
     arr << menu_link(
+      id: :word_cloud, text: I18n.t("menu.word_cloud"),
+      icon: 'fa fa-cloud', link: word_cloud_path,
+      controller: :tweets,
+      permission: can?(:index, Tweet)
+    )
+
+
+    arr << menu_link(
       id: :index, text: I18n.t("menu.heat_map"),
       icon: 'fa fa-map-marker', link: heat_map_path,
       controller: :tweets,

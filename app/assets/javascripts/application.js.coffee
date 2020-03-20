@@ -16,7 +16,7 @@
 //= require raphael
 //= require sb-admin-2
 //= require marker-clusterer
-
+//= require chartjs/Chart.min
 
 app_control.init_before()
 # roda funções de inicialização
@@ -44,3 +44,4 @@ app_control.init_before()
     proceed: "Confirmar",
     proceed_class: "btn proceed btn-primary"
   };
+

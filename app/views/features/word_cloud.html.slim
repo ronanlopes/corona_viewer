@@ -1,0 +1,27 @@
+.container
+
+  .row
+    .col-lg-12
+      h2.section-title.no-margin-top
+        span.titulo
+          = "<i class='fa fa-cloud twitter-color'></i> Nuvem de Palavras".html_safe
+
+  .row
+    .col-md-12#cloud-area
+    	h2.text-center.loading
+            i.fa.fa-circle-o-notch.fa-spin.fa-fw.fa-2x.margin-top-150
+            br
+            br
+            i Gerando a Nuvem de Palavras. Por favor aguarde...
+
+
+
+
+coffee:
+  $ ->
+    $.ajax "/get_cloud_path",
+      success  : (dados) ->
+      	console.log("data");
+      	console.log(dados);
+        $(".loading").hide()
+        $("#cloud-area").append("<img class='word-cloud-img' src='data:image/png;base64,"+dados.base_64+"'/>");

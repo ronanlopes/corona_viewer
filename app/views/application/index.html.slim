@@ -1,2 +1,56 @@
-h2 Página Inicial do Projeto
-span.label.label-warning Default
+.container
+
+  .row
+    .col-lg-12
+      h2.section-title.no-margin-top
+        span.titulo
+          = "<i class='fa fa-dashboard twitter-color'></i> Dashboard".html_safe
+
+
+  .row
+    .col-md-12
+      .row
+        .col-md-4
+          .widget.style1.navy-bg
+            .row
+              .col-xs-4
+                i.fa.fa-globe.fa-5x
+              .col-xs-8.text-right
+                span Número de casos
+                h2.font-bold#numero-casos
+                  i.fa.fa-circle-o-notch.fa-spin.fa-fw
+        .col-md-4
+          .widget.style1.lazur-bg
+            .row
+              .col-xs-4
+                i.fa.fa-frown-o.fa-5x
+              .col-xs-8.text-right
+                span Mortes
+                h2.font-bold#numero-mortes
+                  i.fa.fa-circle-o-notch.fa-spin.fa-fw
+        .col-md-4
+          .widget.style1.yellow-bg
+            .row
+              .col-xs-4
+                i.fa.fa-smile-o.fa-5x
+              .col-xs-8.text-right
+                span Recuperações
+                h2.font-bold#numero-recuperacoes
+                  i.fa.fa-circle-o-notch.fa-spin.fa-fw
+
+  .row
+    .col-md-4
+      canvas id="myChart" width="400" height="400"
+
+
+= javascript_include_tag "chart"
+
+
+coffee:
+  $ ->
+    $.ajax "https://coronavirus-19-api.herokuapp.com/all",
+      success  : (dados) ->
+        $("#numero-mortes").prepend(dados.deaths)
+        $("#numero-casos").prepend(dados.cases)
+        $("#numero-recuperacoes").prepend(dados.recovered)
+        $(".fa-circle-o-notch").hide()

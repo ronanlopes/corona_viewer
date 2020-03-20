@@ -204,3 +204,63 @@
 .hidden{
   display: hidden;
 }
+
+/* BACKGROUNDS */
+
+
+.gray-bg, .bg-muted {
+  background-color: $gray;
+}
+
+.white-bg {
+  background-color: #ffffff;
+}
+
+.blue-bg, .bg-success {
+  background-color: $blue;
+  color: #ffffff;
+}
+
+.navy-bg, .bg-primary {
+  background-color: #356e5b;
+  color: #ffffff;
+}
+
+.lazur-bg, .bg-info {
+  background-color: #23c6c8;
+  color: #ffffff;
+}
+
+.yellow-bg, .bg-warning {
+  background-color: #f8ac59;
+  color: #ffffff;
+}
+
+.red-bg, .bg-danger {
+  background-color: #ED5565;
+  color: #ffffff;
+}
+
+.black-bg {
+  background-color: #262626;
+}
+
+.widget {
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.margin-top-50{
+  margin-top: 50px;
+}
+
+.word-cloud-img{
+  display: block;
+  margin: 0 auto;
+}
+
+.margin-top-150{
+  margin-top: 150px;
+}
