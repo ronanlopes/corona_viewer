@@ -21,4 +21,9 @@ class FeaturesController < ApplicationController
     end
 
 
+    def users_operational_system
+    end
+
+
+
 end

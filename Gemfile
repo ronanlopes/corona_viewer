@@ -56,6 +56,7 @@ gem 'delocalize'
 gem 'rails-observers'
 gem 'chart-js-rails'
 gem 'magic_cloud'
+gem 'twitter'
 
 #Relatórios excel
 gem 'rubyzip', '~> 1.1.0'

@@ -18,6 +18,7 @@
 //= require marker-clusterer
 //= require chartjs/Chart.min
 
+
 app_control.init_before()
 # roda funções de inicialização
 @$ ->

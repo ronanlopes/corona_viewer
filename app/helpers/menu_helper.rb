@@ -47,6 +47,13 @@ module MenuHelper
 
 
 
+    arr << menu_link(
+      id: :index, text: I18n.t("menu.users_operational_system"),
+      icon: 'fa fa-windows', link: users_operational_system_path,
+      controller: :tweets,
+      permission: can?(:index, Tweet)
+    )
+
 
     # Permissões finais
     menus_principais.each do |menu|

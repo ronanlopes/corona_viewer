@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "/heat_map" => "features#heat_map"
   get "/word_cloud" => "features#word_cloud"
   get "/get_cloud_path" => "features#get_cloud_path"
+  get "/users_operational_system" => "features#users_operational_system"
 
 
 
