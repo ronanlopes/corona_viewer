@@ -1,0 +1,23 @@
+- @tweets.each do |tweet|
+  h5
+    strong
+      = tweet[:user_name]
+    span.tweet-info.twitter-color
+      = link_to " @#{tweet[:user_screen_name]}", "https://www.twitter.com/#{tweet[:user_screen_name]}", target: "_blank"
+      '
+      span.tweet-date.twitter-color
+        = link_to tweet[:created_at], tweet[:uri], target: "_blank"
+  h4
+    = tweet[:text].html_safe
+  - if tweet[:media_url].present?
+    img class="tweet-media" src=(tweet[:media_url])
+  h5.tweet-counts
+    i.fa.fa-retweet
+    '
+    = tweet[:retweet_count]
+    '
+    i.fa.fa-heart
+    '
+    = tweet[:favorite_count]
+  hr
+

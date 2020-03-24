@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :users, except: [:show], path: "/controle_de_usuarios"
   resources :tweets
 
+  get "/get_popular_tweets" => "application#get_popular_tweets"
+
 
   get "/heat_map" => "features#heat_map"
   get "/word_cloud" => "features#word_cloud"

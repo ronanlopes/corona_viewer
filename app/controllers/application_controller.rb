@@ -24,6 +24,11 @@ class ApplicationController < ActionController::Base
   def index
   end
 
+  def get_popular_tweets
+      @tweets = TwitterHelper.search("corona virus")[0..9]
+      render partial: 'tweet_info', layout: false
+  end
+
 
 
 
