@@ -53,18 +53,34 @@
               i.fa.fa-circle-o-notch.fa-spin.fa-fw
 
 
+    .col-md-4
+
+      .panel.panel-default.panel-g1
+        .panel-heading.g1-bg
+          strong
+            i.fa.fa-newspaper-o
+            '
+            | Agora no G1
+        .panel-body.no-padding
+          #g1-news
+            h2.text-center
+              i.fa.fa-circle-o-notch.fa-spin.fa-fw
+
+
 
 coffee:
   $ ->
     $.ajax "https://coronavirus-19-api.herokuapp.com/all",
       success  : (dados) ->
-        $("#numero-mortes").prepend(dados.deaths)
-        $("#numero-casos").prepend(dados.cases)
-        $("#numero-recuperacoes").prepend(dados.recovered)
-        $(".fa-circle-o-notch").hide()
+        $("#numero-mortes").html(dados.deaths)
+        $("#numero-casos").html(dados.cases)
+        $("#numero-recuperacoes").html(dados.recovered)
 
   $.ajax "/get_popular_tweets",
-      success  : (dados) ->
-        console.log("dados")
-        console.log(dados)
-        $("#tweets-populares").html(dados)
+    success  : (dados) ->
+      $("#tweets-populares").html(dados)
+
+
+  $.ajax "/get_g1_news",
+    success  : (dados) ->
+      $("#g1-news").html(dados)

@@ -377,6 +377,7 @@ pt-BR:
     heat_map: Mapa de Calor
     word_cloud: Nuvem de Palavras
     users_operational_system: Sistemas Operacionais
+    influent_users: Usuários Influentes
   relatorios:
     atividade: Relatório de Atividade
     produtividade: Relatório de Produtividade

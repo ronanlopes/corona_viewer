@@ -57,6 +57,8 @@ gem 'rails-observers'
 gem 'chart-js-rails'
 gem 'magic_cloud'
 gem 'twitter'
+gem 'koala'
+gem 'nokogiri'
 
 #Relatórios excel
 gem 'rubyzip', '~> 1.1.0'

@@ -18,13 +18,16 @@ Rails.application.routes.draw do
   resources :users, except: [:show], path: "/controle_de_usuarios"
   resources :tweets
 
-  get "/get_popular_tweets" => "application#get_popular_tweets"
 
 
   get "/heat_map" => "features#heat_map"
   get "/word_cloud" => "features#word_cloud"
-  get "/get_cloud_path" => "features#get_cloud_path"
   get "/users_operational_system" => "features#users_operational_system"
+  get "/influent_users" => "features#influent_users"
+
+  get "/get_cloud_path" => "features#get_cloud_path"
+  get "/get_popular_tweets" => "application#get_popular_tweets"
+  get "/get_g1_news" => "application#get_g1_news"
 
 
 

@@ -1,0 +1,10 @@
+- @noticias.each do |n|
+  .row
+    .col-md-4
+      = link_to n[:img].html_safe, n[:link], target:"_blank"
+    .col-md-8
+      h4
+        = link_to n[:title], n[:link], target:"_blank"
+      small
+        = n[:date]
+  hr

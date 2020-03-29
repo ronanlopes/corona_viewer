@@ -378,3 +378,30 @@
 .panel-twitter .panel-heading{
   color: #FFF !important;
 }
+
+.panel-g1 .panel-heading{
+  color: #FFF;
+  background-color: #c4170c;
+}
+
+.img-responsive, .bstn-fd-picture-image{
+  width: 100%;
+  height: auto;
+}
+
+#g1-news a{
+  color: #c4170c;
+}
+
+small{
+  color: #777;
+}
+
+.panel-g1 .panel-body{
+  padding: 20px;
+}
+
+.panel-g1 hr:last-child, .panel-twitter hr:last-child{
+  border-top: 0;
+  margin-top: 0;
+}

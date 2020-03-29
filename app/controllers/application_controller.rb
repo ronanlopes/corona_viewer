@@ -25,8 +25,13 @@ class ApplicationController < ActionController::Base
   end
 
   def get_popular_tweets
-      @tweets = TwitterHelper.search("corona virus")[0..9]
-      render partial: 'tweet_info', layout: false
+    @tweets = TwitterHelper.search("corona virus")[0..9]
+    render partial: 'tweet_info', layout: false
+  end
+
+  def get_g1_news
+    @noticias = WebScrapper.g1_noticias
+    render partial: 'noticia_info', layout: false
   end
 
 

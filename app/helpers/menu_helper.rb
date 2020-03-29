@@ -45,6 +45,13 @@ module MenuHelper
       permission: can?(:index, Tweet)
     )
 
+    arr << menu_link(
+      id: :index, text: I18n.t("menu.influent_users"),
+      icon: 'fa fa-user', link: influent_users_path,
+      controller: :tweets,
+      permission: can?(:index, Tweet)
+    )
+
 
 
     arr << menu_link(
