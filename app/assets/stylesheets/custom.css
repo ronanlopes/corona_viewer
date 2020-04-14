@@ -213,7 +213,6 @@
 }
 
 .blue-bg, .bg-success {
-  background-color: $blue;
   color: #ffffff;
 }
 
@@ -431,4 +430,4 @@ span.titulo{
 
 #series-chart{
   min-height: 300px;
-}
+}git 
