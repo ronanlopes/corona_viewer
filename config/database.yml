@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: corona_viewer_production
-  username: corona_viewer
-  password: <%= ENV['CORONA_VIEWER_DATABASE_PASSWORD'] %>
+  username: root
+  password: NintendO93!

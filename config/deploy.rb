@@ -15,6 +15,7 @@ set :passenger_restart_with_touch, true
 
 set :rvm_type, :user
 set :rvm_ruby_version, '2.3.1'
+set :rvm_custom_path, '/usr/local/rvm/'
 
 # Default value for :scm is :git
 # set :scm, :git

@@ -9,7 +9,7 @@ set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 # Using remote cache to deploy
 set :deploy_via, :remote_cache
 
-server '3.89.98.144/', user: 'ubuntu', roles: %w{app db web}
+server '3.89.98.144', user: 'ubuntu', roles: %w{app db web}
 
 # role-based syntax
 # ==================
@@ -46,7 +46,7 @@ set :pty, false
 # http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start
 #
 set :ssh_options, {
-  keys: %w(/home/ronanlopes/Pems/mariobegod.pem ~/.ssh/id_rsa),
+  keys: %w(/home/ronanlopes/Pems/angelus.pem ~/.ssh/id_rsa),
   forward_agent: true,
   auth_methods: %w(publickey)
 }
