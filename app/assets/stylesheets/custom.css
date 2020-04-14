@@ -208,10 +208,6 @@
 /* BACKGROUNDS */
 
 
-.gray-bg, .bg-muted {
-  background-color: $gray;
-}
-
 .white-bg {
   background-color: #ffffff;
 }
