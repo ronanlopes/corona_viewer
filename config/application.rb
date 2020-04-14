@@ -33,8 +33,5 @@ module RailsProjetoBase
       g.assets = false
     end
 
-    config.assets.js_compressor = Uglifier.new(harmony: true)
-
-
   end
 end
