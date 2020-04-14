@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get "/get_cloud_path" => "features#get_cloud_path"
   get "/get_popular_tweets" => "application#get_popular_tweets"
   get "/get_g1_news" => "application#get_g1_news"
+  get "/get_dashboard_chart" => "application#get_dashboard_chart"
+  get "/get_grau_de_entrada" => "features#get_grau_de_entrada"
 
 
 

@@ -1,0 +1,33 @@
+.container
+
+  .row
+    .col-lg-12
+      h2.section-title.no-margin-top
+        span.titulo
+          = "<i class='fa fa-user twitter-color'></i> Usuários mais Influentes".html_safe
+
+  .row
+    .col-md-4
+
+      .panel.panel-default.panel-twitter
+        .panel-heading.twitter-bg
+          strong
+            i.fa.fa-sort-numeric-asc
+            '
+            | Grau de Entrada
+        .panel-body.no-padding
+          #grau-de-entrada
+            h2.text-center
+              i.fa.fa-circle-o-notch.fa-spin.fa-fw
+
+
+
+coffee:
+
+  $.ajax "/get_grau_de_entrada",
+    success  : (dados) ->
+        $("#grau-de-entrada").html(dados)
+        $('img[data-failover]').error ->
+            failover = $(this).data('failover')
+            if @src != failover
+                @src = failover

@@ -34,7 +34,12 @@ class ApplicationController < ActionController::Base
     render partial: 'noticia_info', layout: false
   end
 
+  def get_dashboard_chart
 
+    dados = JSON.parse(open("https://pomber.github.io/covid19/timeseries.json").read)["Brazil"][-30..-1]
+    render json: {labels: dados.map{|d| d["date"].to_date.strftime("%d/%m/%Y")}, casos: dados.map{|d| d["confirmed"]}, mortes: dados.map{|d| d["deaths"]}, recuperacoes: dados.map{|d| d["recovered"] } }
+
+  end
 
 
 end

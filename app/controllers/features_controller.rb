@@ -7,10 +7,6 @@ class FeaturesController < ApplicationController
     end
 
 
-    def word_cloud
-    end
-
-
     def get_cloud_path
         words = MongoHelper.word_cloud_data[0..100]
         cloud = MagicCloud::Cloud.new(words, rotate: :free, scale: :log)
@@ -21,8 +17,10 @@ class FeaturesController < ApplicationController
     end
 
 
-    def users_operational_system
-    end
+  def get_grau_de_entrada
+    @usuarios = MongoHelper.get_usuarios_grau_de_entrada
+    render partial: 'usuarios', layout: false
+  end
 
 
 

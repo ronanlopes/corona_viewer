@@ -8,53 +8,60 @@
 
 
   .row
-    .col-md-12
-      .row
-        .col-md-4
-          .widget.style1.navy-bg
-            .row
-              .col-xs-4
-                i.fa.fa-globe.fa-5x
-              .col-xs-8.text-right
-                span Número de casos
-                h2.font-bold#numero-casos
-                  i.fa.fa-circle-o-notch.fa-spin.fa-fw
-        .col-md-4
-          .widget.style1.lazur-bg
-            .row
-              .col-xs-4
-                i.fa.fa-frown-o.fa-5x
-              .col-xs-8.text-right
-                span Mortes
-                h2.font-bold#numero-mortes
-                  i.fa.fa-circle-o-notch.fa-spin.fa-fw
-        .col-md-4
-          .widget.style1.yellow-bg
-            .row
-              .col-xs-4
-                i.fa.fa-smile-o.fa-5x
-              .col-xs-8.text-right
-                span Recuperações
-                h2.font-bold#numero-recuperacoes
-                  i.fa.fa-circle-o-notch.fa-spin.fa-fw
+    .col-md-8
+      .col-md-4
+        .widget.style1.navy-bg
+          .row
+            .col-xs-4
+              i.fa.fa-globe.fa-5x
+            .col-xs-8.text-right
+              span Número de casos
+              h2.font-bold#numero-casos
+                i.fa.fa-circle-o-notch.fa-spin.fa-fw
+      .col-md-4
+        .widget.style1.lazur-bg
+          .row
+            .col-xs-4
+              i.fa.fa-frown-o.fa-5x
+            .col-xs-8.text-right
+              span Mortes
+              h2.font-bold#numero-mortes
+                i.fa.fa-circle-o-notch.fa-spin.fa-fw
+      .col-md-4
+        .widget.style1.yellow-bg
+          .row
+            .col-xs-4
+              i.fa.fa-smile-o.fa-5x
+            .col-xs-8.text-right
+              span Recuperações
+              h2.font-bold#numero-recuperacoes
+                i.fa.fa-circle-o-notch.fa-spin.fa-fw
 
-  .row
+
+      .col-md-12#series-chart
+        hr
+        h1.text-center style="padding-top:100px"
+          i.fa.fa-circle-o-notch.fa-spin.fa-fw
+
+        canvas id="myChart"
+
+
+      .col-md-12
+
+        hr
+        .panel.panel-default.panel-twitter
+          .panel-heading.twitter-bg
+            strong
+              i.fa.fa-twitter
+              '
+              | Agora no Twitter
+          .panel-body.no-padding
+            #tweets-populares
+              h2.text-center
+                i.fa.fa-circle-o-notch.fa-spin.fa-fw
+
+
     .col-md-4
-
-      .panel.panel-default.panel-twitter
-        .panel-heading.twitter-bg
-          strong
-            i.fa.fa-twitter
-            '
-            | Agora no Twitter
-        .panel-body.no-padding
-          #tweets-populares
-            h2.text-center
-              i.fa.fa-circle-o-notch.fa-spin.fa-fw
-
-
-    .col-md-4
-
       .panel.panel-default.panel-g1
         .panel-heading.g1-bg
           strong
@@ -68,13 +75,20 @@
 
 
 
+
+
+
+
+
+
+
 coffee:
   $ ->
     $.ajax "https://coronavirus-19-api.herokuapp.com/all",
       success  : (dados) ->
-        $("#numero-mortes").html(dados.deaths)
-        $("#numero-casos").html(dados.cases)
-        $("#numero-recuperacoes").html(dados.recovered)
+        $("#numero-mortes").html(dados.deaths.toLocaleString())
+        $("#numero-casos").html(dados.cases.toLocaleString())
+        $("#numero-recuperacoes").html(dados.recovered.toLocaleString())
 
   $.ajax "/get_popular_tweets",
     success  : (dados) ->
@@ -84,3 +98,47 @@ coffee:
   $.ajax "/get_g1_news",
     success  : (dados) ->
       $("#g1-news").html(dados)
+
+
+
+  $.ajax "/get_dashboard_chart",
+
+    success  : (dados) ->
+
+      $("#series-chart h1").remove()
+      ctx = document.getElementById('myChart').getContext('2d')
+      new Chart(ctx,
+        type: 'line'
+        data:
+          labels: dados.labels
+          datasets: [
+            {
+              label: 'Nº de Casos'
+              data: dados.casos
+              fill: false
+              borderWidth: 2
+              backgroundColor: "#609e8a"
+              borderColor: "#356e5b"
+            }
+            {
+              label: 'Mortes'
+              data: dados.mortes
+              fill: false
+              borderWidth: 2
+              backgroundColor: "#46eef0"
+              borderColor: "#23c6c8"
+            }
+            {
+              label: 'Recuperações'
+              data: dados.recuperacoes
+              fill: false
+              borderWidth: 2
+              backgroundColor: "#ffc280"
+              borderColor: "#f8ac59"
+            }
+          ]
+        options: title:
+          display: true
+          text: 'Dados do COVID-19 no Brasil')
+
+

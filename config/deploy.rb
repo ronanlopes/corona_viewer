@@ -1,16 +1,15 @@
 # config valid only for current version of Capistrano
 lock "3.8.2"
 
-set :application, 'bbaemp'
-set :repo_url, 'git@github.com:fneto/bba_emp_web.git'
+set :application, 'corona_viewer'
+set :repo_url, 'git@github.com:ronanlopes/corona_viewer.git'
 set :user, 'ubuntu'
-
 
 # Need this so capistrano creates the directories as "ubuntu" user
 set :use_sudo, false
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/ubuntu/bbaemp'
+set :deploy_to, '/home/ubuntu/corona_viewer'
 
 set :passenger_restart_with_touch, true
 

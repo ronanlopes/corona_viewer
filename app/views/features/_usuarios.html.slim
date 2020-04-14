@@ -1,0 +1,29 @@
+- @usuarios.each do |usuario|
+	.row
+		.col-md-4
+			= link_to((image_tag usuario[:profile_image_url].gsub("_normal",""), class: "img-circle img-responsive", data: {failover: image_url("default-user")}), "https://twitter.com/#{usuario[:screen_name]}", target: "_blank")
+		.col-md-8
+			h4.twitter-color
+				= link_to "@#{usuario[:screen_name]}", "https://twitter.com/#{usuario[:screen_name]}", target: "_blank"
+				- if usuario[:verified]
+					'
+					span.twiter-color
+						i.fa.fa-check-circle
+			h3
+				= usuario[:name]
+			h3
+				small
+					.float-left
+						i.fa.fa-users
+						'
+						= number_to_currency(usuario[:followers_count], unit: "", separator: ",", delimiter: ".", precision: 0)
+					- if usuario[:location]
+						.float-right
+							i.fa.fa-map-marker
+							'
+							= usuario[:location]
+
+			small.created-at
+				= "Desde #{usuario[:created_at].to_datetime.strftime("%d/%m/%Y")}"
+
+	hr

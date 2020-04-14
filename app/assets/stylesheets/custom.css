@@ -401,7 +401,38 @@ small{
   padding: 20px;
 }
 
-.panel-g1 hr:last-child, .panel-twitter hr:last-child{
+.panel hr:last-child{
   border-top: 0;
   margin-top: 0;
+}
+
+.img-circle{
+  border-radius: 50%;
+}
+
+.float-right{
+  float: right;
+}
+
+.float-left{
+  float: left;
+}
+
+.created-at{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+span.titulo{
+  border-bottom: 2px solid lightgray;
+  padding-bottom: 10px;
+}
+
+.section-title{
+  margin-bottom: 70px;
+}
+
+#series-chart{
+  min-height: 300px;
 }
