@@ -2,7 +2,9 @@ class FeaturesController < ApplicationController
 
 
     def heat_map
-        @points = MongoHelper.load_map_points
+        @points = Rails.cache.fetch(["heat_map",Date.today.to_s], expires_in: 24.hours) do
+            MongoHelper.load_map_points
+        end
         render "heat_map"
     end
 
@@ -44,7 +46,7 @@ class FeaturesController < ApplicationController
         "stwfunny": 6170
     }
 
-    @usuarios = Rails.cache.fetch(["get_usuarios_grau_de_entrada",Date.tomorrow.to_s], expires_in: 24.hours) do
+    @usuarios = Rails.cache.fetch(["get_usuarios_grau_de_entrada",Date.today.to_s], expires_in: 24.hours) do
         usuarios.keys.map{|u|
             data = TwitterHelper.get_user_data(u).to_h.transform_keys(&:to_sym)
             data[:number] = usuarios[u]
