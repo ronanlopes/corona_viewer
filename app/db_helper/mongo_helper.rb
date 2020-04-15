@@ -71,7 +71,7 @@ class MongoHelper
 
 
     def self.get_usuarios_grau_de_entrada
-        CLIENT[:tweets_coronavirus].find().sort({"user.followers_count" => -1}).limit(15).to_a.map{|t| t[:user]}.uniq[0..9]
+        CLIENT[:tweets_coronavirus].find().sort({"user.followers_count" => -1}).limit(15).to_a.map{|t| t[:user][:screen_name]}.uniq[0..9]
     end
 
     def self.create_indexes

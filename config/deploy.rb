@@ -39,7 +39,7 @@ set :rvm_custom_path, '/usr/local/rvm/'
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
-set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml lib/templates/rails/scaffold_controller/controller.rb}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
 namespace :deploy do

@@ -1,29 +1,33 @@
-- @usuarios.each do |usuario|
+- @usuarios.select{|u| u.to_h[:screen_name].present?}.each do |usuario|
+
 	.row
-		.col-md-4
-			= link_to((image_tag usuario[:profile_image_url].gsub("_normal",""), class: "img-circle img-responsive", data: {failover: image_url("default-user")}), "https://twitter.com/#{usuario[:screen_name]}", target: "_blank")
-		.col-md-8
-			h4.twitter-color
+		.col-md-3
+			= link_to((image_tag usuario[:profile_image_url].to_s.gsub("_normal",""), class: "img-circle img-responsive", data: {failover: image_url("default-user")}), "https://twitter.com/#{usuario[:screen_name]}", target: "_blank")
+		.col-md-9
+			h5.twitter-color
 				= link_to "@#{usuario[:screen_name]}", "https://twitter.com/#{usuario[:screen_name]}", target: "_blank"
-				- if usuario[:verified]
+				- if usuario.to_h[:verified]
 					'
 					span.twiter-color
 						i.fa.fa-check-circle
-			h3
+			h4
 				= usuario[:name]
-			h3
+			h4
 				small
 					.float-left
-						i.fa.fa-users
+						i class="fa #{@icon || 'fa-users'}"
 						'
-						= number_to_currency(usuario[:followers_count], unit: "", separator: ",", delimiter: ".", precision: 0)
-					- if usuario[:location]
+						- if (usuario[:number] || usuario[:followers_count]) > 1
+							= number_to_currency((usuario[:number] || usuario[:followers_count]), unit: "", separator: ",", delimiter: ".", precision: 0)
+						- else
+							= (usuario[:number] || usuario[:followers_count]).to_f.round(2)
+					- if usuario[:location].present?
 						.float-right
 							i.fa.fa-map-marker
 							'
 							= usuario[:location]
 
 			small.created-at
-				= "Desde #{usuario[:created_at].to_datetime.strftime("%d/%m/%Y")}"
+				= "Desde #{usuario[:created_at].try(:to_datetime).try("strftime","%d/%m/%Y")}" if usuario[:created_at]
 
 	hr

@@ -7,27 +7,95 @@
           = "<i class='fa fa-user twitter-color'></i> Usuários mais Influentes".html_safe
 
   .row
-    .col-md-4
+    .col-md-3
 
       .panel.panel-default.panel-twitter
         .panel-heading.twitter-bg
           strong
-            i.fa.fa-sort-numeric-asc
+            i.fa.fa-users
             '
-            | Grau de Entrada
+            | Número de seguidores
         .panel-body.no-padding
-          #grau-de-entrada
+          #numero-de-seguidores
             h2.text-center
               i.fa.fa-circle-o-notch.fa-spin.fa-fw
+
+    .col-md-9
+
+      .row
+
+        h4.text-center
+          i.fa.fa-at
+          '
+          'Rede de menções
+
+        .col-md-4
+
+          .panel.panel-default.panel-twitter
+            .panel-heading.twitter-bg
+              strong
+                i.fa.fa-sort-numeric-asc
+                '
+                | Grau de Entrada
+            .panel-body.no-padding
+              #grau-de-entrada
+                h2.text-center
+                  i.fa.fa-circle-o-notch.fa-spin.fa-fw
+
+
+        .col-md-4
+
+          .panel.panel-default.panel-twitter
+            .panel-heading.twitter-bg
+              strong
+                i.fa.fa-file-text-o
+                '
+                | Page Rank
+            .panel-body.no-padding
+              #page-rank
+                h2.text-center
+                  i.fa.fa-circle-o-notch.fa-spin.fa-fw
+
+
+        .col-md-4
+
+          .panel.panel-default.panel-twitter
+            .panel-heading.twitter-bg
+              strong
+                i.fa.fa-arrows-alt
+                '
+                | Betweeness
+            .panel-body.no-padding
+              #betweeness
+                h2.text-center
+                  i.fa.fa-circle-o-notch.fa-spin.fa-fw
 
 
 
 coffee:
 
+  $.ajax "/get_numero_de_seguidores",
+    success  : (dados) ->
+      $("#numero-de-seguidores").html(dados)
+
   $.ajax "/get_grau_de_entrada",
     success  : (dados) ->
-        $("#grau-de-entrada").html(dados)
-        $('img[data-failover]').error ->
-            failover = $(this).data('failover')
-            if @src != failover
-                @src = failover
+      $("#grau-de-entrada").html(dados)
+
+  $.ajax "/get_page_rank",
+    success  : (dados) ->
+      $("#page-rank").html(dados)
+
+  $.ajax "/get_betweeness",
+    success  : (dados) ->
+      $("#betweeness").html(dados)
+
+css:
+  .panel-body{
+    padding: 20px 15px;
+  }
+
+  .panel-body .col-md-3{
+    padding-left: 15px;
+    padding-right: 5px;
+  }

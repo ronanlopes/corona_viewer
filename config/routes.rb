@@ -29,7 +29,12 @@ Rails.application.routes.draw do
   get "/get_popular_tweets" => "application#get_popular_tweets"
   get "/get_g1_news" => "application#get_g1_news"
   get "/get_dashboard_chart" => "application#get_dashboard_chart"
+
+
+  get "/get_numero_de_seguidores" => "features#get_numero_de_seguidores"
   get "/get_grau_de_entrada" => "features#get_grau_de_entrada"
+  get "/get_page_rank" => "features#get_page_rank"
+  get "/get_betweeness" => "features#get_betweeness"
 
 
 

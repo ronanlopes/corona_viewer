@@ -82,4 +82,3 @@ production:
   <<: *default
   database: corona_viewer_production
   username: root
-  password: NintendO93!

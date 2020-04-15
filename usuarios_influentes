@@ -22,3 +22,64 @@ stwfunny 0.140553100369
 
 
 
+
+
+>>> print "Usuários mais influentes por grau de entrada:"
+Usuários mais influentes por grau de entrada:
+>>> maiorgrau=graus_ordenados[0][1]
+>>> for usuario,grau in graus_ordenados[:10]:
+...     print usuario,grau
+... 
+babibitch794 43898
+rayannemendesss 34481
+ricardin_reborn 33603
+akapretocaro 16736
+meowgguk 14592
+luscatic 13888
+alvxaro 13784
+thomassantanas 8573
+gentlepvnk 6248
+stwfunny 6170
+>>> 
+>>> 
+>>> 
+>>> pageranks_ordenados = sorted(pageranks.items(), key=itemgetter(1), reverse=True)
+>>> print "\nUsuários mais influentes por PageRank:"
+
+Usuários mais influentes por PageRank:
+>>> maiorpagerank=pageranks_ordenados[0][1]
+>>> for usuario,grau in pageranks_ordenados[:10]:
+...     print usuario,grau/float(maiorpagerank)
+... 
+babibitch794 1.0
+gaaarfielddd 0.850034089532
+rayannemendesss 0.812494396667
+ricardin_reborn 0.788034984277
+augusttovieira 0.723276153709
+frauveadeira 0.614978188747
+alvxaro 0.455154658286
+akapretocaro 0.416270141685
+jairsoncardosoo 0.394641986812
+meowgguk 0.300108719498
+>>> 
+>>> 
+>>> 
+>>> betweenness_ordenados = sorted(betweenness.items(), key=itemgetter(1), reverse=True)
+>>> 
+>>> print "\nUsuários mais influentes por Betweenness (centralidade):"6
+
+Usuários mais influentes por Betweenness (centralidade):
+>>> maiorbetweenness=betweenness_ordenados[0][1]
+>>> for usuario,grau in betweenness_ordenados[:10]:
+...     print usuario,grau/float(maiorbetweenness)
+... 
+akapretocaro 1.0
+babibitch794 0.319443691482
+gaaarfielddd 0.212960748988
+NicolyAndrades1 0.17020250671
+frdclh 0.118193874808
+alvxaro 0.107628270133
+augusttovieira 0.106541150475
+duuhads6 0.104924594984
+svetenapolitino 0.0843478737252
+sdsotnaselocin 0.0574150120667

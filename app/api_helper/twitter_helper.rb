@@ -53,6 +53,14 @@ class TwitterHelper
 
 	end
 
+	def self.get_user_data(user)
+		begin
+			self.client.user(user.to_s)
+		rescue
+			{}
+		end
+	end
+
 
 	def self.get_followers
 
