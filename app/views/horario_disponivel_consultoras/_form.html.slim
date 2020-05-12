@@ -1,0 +1,28 @@
+.panel.panel-default
+  .panel-heading
+    h5 Informações de Cadastro
+  .panel-body
+    = simple_form_for(@horario_disponivel_consultora, validate: true) do |f|
+      = f.error_notification
+
+      .form-inputs
+
+        = f.input :dia
+
+        .hr-line-dashed
+
+        = f.input :hora_inicio
+
+        .hr-line-dashed
+
+        = f.input :hora_fim
+
+        .hr-line-dashed
+
+        = f.association :user, input_html: {class: "chosen-select"}
+
+        .hr-line-solid
+        .form-actions
+          = botao_salvar(f)
+          '
+          = botao_cancelar(f)

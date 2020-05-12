@@ -1,0 +1,25 @@
+.container
+
+  .row
+    .col-lg-12
+      h2.section-title.no-margin-top
+        span.titulo
+          = I18n.t("activerecord.attributes.horario_disponivel_consultora.index")
+        = botao_adicionar(HorarioDisponivelConsultora)
+  .row
+    .col-md-12
+      .row
+        .col-md-12
+          table.table.table-striped.table-responsive.table-bordered#horario_disponivel_consultoras_datatable data-source="#{send("horario_disponivel_consultoras_url", format: 'json')}"
+            thead
+              tr
+
+                th = I18n.t("activerecord.attributes.cerquilha")
+                th = I18n.t("activerecord.attributes.horario_disponivel_consultora.dia")
+                th = I18n.t("activerecord.attributes.horario_disponivel_consultora.hora_inicio")
+                th = I18n.t("activerecord.attributes.horario_disponivel_consultora.hora_fim")
+                th = I18n.t("activerecord.attributes.horario_disponivel_consultora.user")
+                th = I18n.t("helpers.actions")
+
+            tbody
+

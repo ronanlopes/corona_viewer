@@ -1,0 +1,1 @@
+json.partial! "horario_disponivel_consultoras/horario_disponivel_consultora", horario_disponivel_consultora: @horario_disponivel_consultora

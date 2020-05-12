@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200315220921) do
+ActiveRecord::Schema.define(version: 20200507132518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "horario_disponivel_consultoras", force: :cascade do |t|
+    t.integer  "dia"
+    t.string   "hora_inicio"
+    t.string   "hora_fim"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_horario_disponivel_consultoras_on_user_id", using: :btree
+  end
 
   create_table "perfis", force: :cascade do |t|
     t.string   "nome"
@@ -46,4 +56,5 @@ ActiveRecord::Schema.define(version: 20200315220921) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "horario_disponivel_consultoras", "users"
 end

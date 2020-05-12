@@ -269,7 +269,6 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
-
   activerecord:
     errors:
       messages:
@@ -292,6 +291,12 @@ pt-BR:
       tweet:
         one: Tweet
         other: Tweets
+      horario_disponivel_consultora:
+        one: Horario disponivel consultora
+        other: Horarios disponiveis consultoras
+      horario_disponivel_consultor:
+        one: Horario disponivel consultor
+        other: Horarios disponiveis consultores
     attributes:
       cerquilha: "#"
       user:
@@ -335,6 +340,29 @@ pt-BR:
         followers_count: Seguidores
         verified: Perfil Verificado
         friends_count: Seguindo
+      fake_user:
+        verify_score: Score
+        id: ID
+        screen_name: Usuário
+        name: Nome
+        followers_count: Seguidores
+        friends_count: Seguindo
+        statuses_count: Status
+        listed_count: Listado em
+        source: Fonte
+        default_profile: Perfil padrão
+      horario_disponivel_consultora:
+        dia: Dia
+        hora_inicio: Hora inicio
+        hora_fim: Hora fim
+        user: User
+        index: Lista de Horarios disponiveis consultoras
+      horario_disponivel_consultor:
+        dia: Dia
+        hora_inicio: Hora inicio
+        hora_fim: Hora fim
+        user: User
+        index: Lista de Horarios disponiveis consultores
     messages:
       create_success: criado com sucesso
       update_success: atualizado com sucesso
@@ -378,6 +406,7 @@ pt-BR:
     word_cloud: Nuvem de Palavras
     users_operational_system: Sistemas Operacionais
     influent_users: Usuários Influentes
+    fake_users: "(Possíveis) Perfis Falsos"
   relatorios:
     atividade: Relatório de Atividade
     produtividade: Relatório de Produtividade

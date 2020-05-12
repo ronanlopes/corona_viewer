@@ -9,7 +9,16 @@ class TweetsController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: TweetsDatatable.new(view_context) }
+      format.json {
+
+
+        datatable = Rails.cache.fetch(["tweets_datatable",params[:start], params[:length], params["order"]["0"]["dir"], params["order"]["0"]["column"], params[:search][:value]], expires_in: 24.hours) do
+          TweetsDatatable.new(view_context).to_json
+        end
+
+
+        render json: TweetsDatatable.new(view_context).to_json
+      }
     end
   end
 

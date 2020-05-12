@@ -6,7 +6,7 @@
     bInfo: true
     paginate: true,
     serverSide: true,
-    iDisplayLength: 25,
+    iDisplayLength: 100,
     ajax: $("#" + dom_id).data('source')
     fnRowCallback: row_callback
     drawCallback: datatable_draw_callback

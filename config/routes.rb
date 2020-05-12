@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :horario_disponivel_consultoras
   resources :perfis
   root to: 'application#index'
 
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
   get "/word_cloud" => "features#word_cloud"
   get "/users_operational_system" => "features#users_operational_system"
   get "/influent_users" => "features#influent_users"
+  get "/fake_users" => "features#fake_users"
 
   get "/get_cloud_path" => "features#get_cloud_path"
   get "/get_popular_tweets" => "application#get_popular_tweets"

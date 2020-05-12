@@ -6,7 +6,44 @@ class MongoHelper
     CLIENT = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'puc-tcc')
 
     def self.load_collection(collection, offset, limit, sort_column, sort_direction, search)
-        CLIENT[collection].find({ "$or": [{ text: /#{Regexp.quote(search)}/i}, {"user.name": /#{Regexp.quote(search)}/i}, { id: /#{Regexp.quote(search)}/i}, {"place.full_name": /#{Regexp.quote(search)}/i }] }).sort({sort_column => (sort_direction == "asc" ? 1 : -1 )}).skip(offset).limit(limit).to_a
+        CLIENT[collection].find({ "$or": [{ text: /#{Regexp.quote(search)}/i}, {"user.name": /#{Regexp.quote(search)}/i}, { id: /#{Regexp.quote(search)}/i}, {"place.full_name": /#{Regexp.quote(search)}/i }] }).sort({sort_column => (sort_direction == "asc" ? 1 : -1 )}).skip(offset*limit).limit(limit).to_a
+    end
+
+    def self.get_fake_users(offset, limit, sort_column, sort_direction, search)
+
+        #CLIENT[:tweets_coronavirus].find({ "user.verify_score": { "$lte": 2},"$or": [{"user.name": /#{Regexp.quote(search)}/i}, {"user.screen_name": /#{Regexp.quote(search)}/i}, {"source": /#{Regexp.quote(search)}/i}, {"user.verify_score": search} ] }).sort({sort_column => (sort_direction == "asc" ? 1 : -1 )}).skip(offset*limit).limit(limit).to_a
+
+
+        CLIENT[:tweets_coronavirus].find().aggregate([
+            {"$match": {
+                "$and": [
+                        {"user.verify_score": {"$lte": 2}},
+                        {"$or": [{"user.name": /#{Regexp.quote(search)}/i}, {"user.screen_name": /#{Regexp.quote(search)}/i}, {"source": /#{Regexp.quote(search)}/i}, {"user.verify_score": search} ]}
+                    ]
+                }
+            },
+            {'$sort' => {sort_column => (sort_direction == "asc" ? 1 : -1 )}},
+            {'$skip' => limit*offset},
+            {'$limit' => limit },
+            {'$group'=> {
+                    '_id'=> '$user.id',
+                    'verify_score' => { "$first": '$user.verify_score'},
+                    'screen_name' => { "$first": '$user.screen_name'},
+                    'name' => { "$first": '$user.name'},
+                    'followers_count' => { "$first": '$user.followers_count'},
+                    'friends_count' => { "$first": '$user.friends_count'},
+                    'statuses_count' => { "$first": '$user.statuses_count'},
+                    'listed_count' => { "$first": '$user.listed_count'},
+                    'source' => { "$first": '$source'},
+                    'default_profile' => { "$first": '$user.default_profile'}
+                }
+            }
+            ],
+            {:allow_disk_use => true}
+        ).to_a.map{|e| e.values[1..-1]}
+
+
+
     end
 
 
@@ -25,6 +62,7 @@ class MongoHelper
         }.select{|p| p[:coordinates][1] > -33.69111 && p[:coordinates][1] < 2.81972 && p[:coordinates][0] > -72.89583 && p[:coordinates][0] < -34.80861}
 
     end
+
 
 
     def self.so_data
@@ -49,6 +87,50 @@ class MongoHelper
         }
 
         so
+
+    end
+
+
+
+    def self.set_user_verify_score
+
+        CLIENT[:tweets_coronavirus].find({"user.verified": false, "user.verify_score":{"$exists":false}}).limit(100000).to_a.each do |t|
+
+            user = t[:user]
+            user_score = 0
+
+            human_conditions = [
+                user[:name].present?,
+                (user[:profile_image_url].present? && user[:profile_image_url] != "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"),
+                user[:location].present?,
+                user[:description].present?,
+                (user[:followers_count].to_i > 100),
+                user[:listed_count].to_i > 0,
+                user[:statuses_count].to_i > 100,
+                user[:geo_enabled],
+                !user[:default_profile],
+                user[:url].present?,
+                (t[:text].downcase.include?("iphone") || t[:text].downcase.include?("android") || t[:text].downcase.include?("twitter web")),
+                (t[:followers_count].to_i > 2*t[:friends_count].to_i),
+                user[:created_at].to_datetime < Time.now.advance(years: -5)
+            ]
+
+            user_score += human_conditions.select{|c| c}.size
+
+
+            bot_conditions = [
+                user[:description].to_s.downcase.include?("bot"),
+                user[:screen_name].split('').map(&:to_i).select{|e| e > 0}.size > 5
+            ]
+
+            user_score -= bot_conditions.select{|c| c}.size
+
+            user_score -= 3 if user[:followers_count].to_f/user[:friends_count].to_f < 0.02
+
+            CLIENT[:tweets_coronavirus].update_many({'user.id': user[:id]},{'$set': { 'user.verify_score': user_score }})
+
+
+        end
 
     end
 

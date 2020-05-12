@@ -2,8 +2,8 @@ class TwitterHelper
 
 	CONSUMER_KEY = "IsMgD6C0aVRHSDHbcpgIj0R3U"
 	CONSUMER_SECRET = "aIbzwN2QdwUPhvD2a1R62qNPKCqbGBOx5RJcYFNhXd9QCLAtkT"
-	ACCESS_TOKEN = "855901890080636928-spWKdGaWdnYdsAWdEs27UNkZL0I3t3I"
-	ACCESS_TOKEN_SECRET = "z3jXKhrWxKJ8p7eipwHNxShWr672sa4O105YDPknE6n3l"
+	ACCESS_TOKEN = '855901890080636928-BXrg751gVrehvbLCZW2jUUHvxR9Xniv'
+	ACCESS_TOKEN_SECRET = 'YIhWzmBhzGSZJ7lC46gUEYQRpjBdrdSWOZtRvf9atTINS'
 
 
 	def self.request_token
@@ -56,7 +56,9 @@ class TwitterHelper
 	def self.get_user_data(user)
 		begin
 			self.client.user(user.to_s)
-		rescue
+		rescue Exception => ex
+			Rails.logger.debug 222222222222222222222222222222
+			Rails.logger.debug ex.message
 			{}
 		end
 	end

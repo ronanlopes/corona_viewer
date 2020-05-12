@@ -53,6 +53,14 @@ module MenuHelper
     )
 
 
+    arr << menu_link(
+      id: :index, text: I18n.t("menu.fake_users"),
+      icon: 'fa fa-user-times', link: fake_users_path,
+      controller: :tweets,
+      permission: can?(:index, Tweet)
+    )
+
+
 
     arr << menu_link(
       id: :index, text: I18n.t("menu.users_operational_system"),

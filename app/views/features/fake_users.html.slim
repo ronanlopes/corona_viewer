@@ -1,0 +1,24 @@
+.container
+
+  .row
+    .col-lg-12
+      h2.section-title.no-margin-top
+        span.titulo
+          = "<i class='fa fa-user-times twitter-color'></i> Possíveis Perfis Falsos  <i class='fa fa-spinner fa-spin fa-fw loading-spinner'></i>".html_safe
+
+  .row
+    .col-md-12
+      table.table.table-striped.table-responsive.table-bordered#fake_users_datatable data-source="#{send("fake_users_path", format: 'json')}"
+        thead
+          tr
+
+            - FakeUsersDatatable::VIEW_COLUMNS.keys.each do |column|
+              th = I18n.t("activerecord.attributes.fake_user.#{column}")
+
+        tbody
+
+
+
+coffee:
+  $ ->
+    custom_datatable("fake_users_datatable", null)

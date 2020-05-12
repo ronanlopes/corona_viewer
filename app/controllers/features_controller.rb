@@ -2,7 +2,7 @@ class FeaturesController < ApplicationController
 
 
     def heat_map
-        @points = Rails.cache.fetch(["heat_map",Date.today.to_s], expires_in: 24.hours) do
+        @points = Rails.cache.fetch(["heat_map"], expires_in: 24.hours) do
             MongoHelper.load_map_points
         end
         render "heat_map"
@@ -10,7 +10,7 @@ class FeaturesController < ApplicationController
 
 
     def get_cloud_path
-        path = Rails.cache.fetch(["get_cloud_path",Date.today.to_s], expires_in: 24.hours) do
+        path = Rails.cache.fetch(["get_cloud_path"], expires_in: 24.hours) do
             words = MongoHelper.word_cloud_data[0..100]
             cloud = MagicCloud::Cloud.new(words, rotate: :free, scale: :log)
             img = cloud.draw(1200, 800) #default height/width
@@ -22,8 +22,16 @@ class FeaturesController < ApplicationController
     end
 
 
+    def fake_users
+        respond_to do |format|
+          format.html
+          format.json { render json: FakeUsersDatatable.new(view_context) }
+        end
+    end
+
+
   def get_numero_de_seguidores
-    @usuarios = Rails.cache.fetch(["get_numero_de_seguidores",Date.today.to_s], expires_in: 24.hours) do
+    @usuarios = Rails.cache.fetch(["get_numero_de_seguidores"], expires_in: 24.hours) do
         MongoHelper.get_usuarios_grau_de_entrada.map{|u| TwitterHelper.get_user_data(u)}
     end
     render partial: 'usuarios', layout: false
@@ -46,7 +54,7 @@ class FeaturesController < ApplicationController
         "stwfunny": 6170
     }
 
-    @usuarios = Rails.cache.fetch(["get_usuarios_grau_de_entrada",Date.today.to_s], expires_in: 24.hours) do
+    @usuarios = Rails.cache.fetch(["get_usuarios_grau_de_entrada"], expires_in: 24.hours) do
         usuarios.keys.map{|u|
             data = TwitterHelper.get_user_data(u).to_h.transform_keys(&:to_sym)
             data[:number] = usuarios[u]
@@ -74,7 +82,7 @@ class FeaturesController < ApplicationController
         "meowgguk": 0.300108719498
     }
 
-    @usuarios = Rails.cache.fetch(["get_usuarios_page_rank",Date.today.to_s], expires_in: 24.hours) do
+    @usuarios = Rails.cache.fetch(["get_usuarios_page_rank"], expires_in: 24.hours) do
         usuarios.keys.map{|u|
             data = TwitterHelper.get_user_data(u).to_h.transform_keys(&:to_sym)
             data[:number] = usuarios[u]
@@ -103,7 +111,7 @@ class FeaturesController < ApplicationController
         "sdsotnaselocin": 0.0574150120667
     }
 
-    @usuarios = Rails.cache.fetch(["get_usuarios_betweeness",Date.today.to_s], expires_in: 24.hours) do
+    @usuarios = Rails.cache.fetch(["get_usuarios_betweeness"], expires_in: 24.hours) do
         usuarios.keys.map{|u|
             data = TwitterHelper.get_user_data(u).to_h.transform_keys(&:to_sym)
             data[:number] = usuarios[u]
