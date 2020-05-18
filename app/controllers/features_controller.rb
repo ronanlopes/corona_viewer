@@ -27,7 +27,7 @@ class FeaturesController < ApplicationController
           format.html
           format.json {
             datatable = Rails.cache.fetch(["fakeusers_datatable",params[:start], params[:length], params["order"]["0"]["dir"], params["order"]["0"]["column"], params[:search][:value]]) do
-                FakeUsersDatatable.new(view_context)
+                FakeUsersDatatable.new(view_context).to_json
              end
             render json: datatable
           }
