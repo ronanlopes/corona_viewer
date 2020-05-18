@@ -12,12 +12,12 @@ class TweetsController < ApplicationController
       format.json {
 
 
-        datatable = Rails.cache.fetch(["tweets_datatable",params[:start], params[:length], params["order"]["0"]["dir"], params["order"]["0"]["column"], params[:search][:value]], expires_in: 24.months) do
+        datatable = Rails.cache.fetch(["tweets_datatable",params[:start], params[:length], params["order"]["0"]["dir"], params["order"]["0"]["column"], params[:search][:value]]) do
           TweetsDatatable.new(view_context).to_json
         end
 
 
-        render json: TweetsDatatable.new(view_context).to_json
+        render json: datatable
       }
     end
   end
