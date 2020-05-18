@@ -6,6 +6,8 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = favicon_link_tag 'virus.png', type: 'image/png'
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
 
   body
     #wrapper class=("#{params[:controller]}.#{params[:action]}")
@@ -29,7 +31,7 @@ html
           .navbar-default.sidebar role="navigation"
             .sidebar-nav.navbar-collapse
 
-              = link_to(image_tag("virus.png", class: "img-responsive", style: "margin: 20px auto 30px; width: 60%"),root_path)
+              = link_to(image_tag("virus.png", class: "no-mobile img-responsive", style: "margin: 20px auto 30px; width: 60%"),root_path)
 
               ul#side-menu.nav
                 li

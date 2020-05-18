@@ -6,4 +6,4 @@ No servidor:
 
 - Criar índices
 
-- Memória para mongo: db.adminCommand({setParameter: 1, internalQueryExecMaxBlockingSortBytes: 335544320})
+- Memória para mongo: db.adminCommand({setParameter: 1, internalQueryExecMaxBlockingSortBytes: 665544320})

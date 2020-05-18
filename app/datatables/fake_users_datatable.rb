@@ -9,8 +9,7 @@ class FakeUsersDatatable < TemplateDatatable
     :friends_count => "user.friends_count",
     :statuses_count => "user.statuses_count",
     :listed_count => "user.listed_count",
-    :source => "source",
-    :default_profile => "user.default_profile"
+    :source => "source"
   }
 
   def as_json(options = {})

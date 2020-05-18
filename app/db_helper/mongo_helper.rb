@@ -6,7 +6,15 @@ class MongoHelper
     CLIENT = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'puc-tcc')
 
     def self.load_collection(collection, offset, limit, sort_column, sort_direction, search)
-        CLIENT[collection].find({ "$or": [{ text: /#{Regexp.quote(search)}/i}, {"user.name": /#{Regexp.quote(search)}/i}, { id: /#{Regexp.quote(search)}/i}, {"place.full_name": /#{Regexp.quote(search)}/i }] }).sort({sort_column => (sort_direction == "asc" ? 1 : -1 )}).skip(offset*limit).limit(limit).to_a
+
+        puts 3333333333333333333
+        puts offset
+        puts limit
+        puts sort_column
+        puts sort_direction
+        puts search
+
+        CLIENT[collection].find({ "$or": [{ text: /#{Regexp.quote(search)}/i}, {"user.name": /#{Regexp.quote(search)}/i}, { id: /#{Regexp.quote(search)}/i}, {"place.full_name": /#{Regexp.quote(search)}/i }] }).sort({sort_column => (sort_direction == "asc" ? 1 : -1 )}).skip(offset).limit(limit).to_a
     end
 
     def self.get_fake_users(offset, limit, sort_column, sort_direction, search)

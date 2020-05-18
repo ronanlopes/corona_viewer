@@ -441,3 +441,11 @@ a{
   color: #FFF;
   padding: 15px;
 }
+
+
+@media all and (max-width: 1023px) {
+  .no-mobile{
+    display: none;
+  }
+
+}
