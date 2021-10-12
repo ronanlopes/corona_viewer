@@ -197,7 +197,8 @@ GEM
     orm_adapter (0.5.0)
     pg (0.21.0)
     public_suffix (4.0.3)
-    puma (3.9.1)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -353,7 +354,7 @@ DEPENDENCIES
   mongo (~> 2.12.0.rc0)
   nokogiri
   pg (~> 0.18)
-  puma (~> 3.0)
+  puma (~> 4.3)
   rails (~> 5.0.3)
   rails-observers
   rubyzip (~> 1.1.0)
